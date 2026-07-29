@@ -1,0 +1,27 @@
+:root { --accent: #5f3dc4; --text: #212529; --muted: #868e96; }
+* { box-sizing: border-box; }
+body { margin: 0; font-family: system-ui, sans-serif; color: var(--text); background: #fafafa; }
+main { max-width: 720px; margin: 0 auto; padding: 40px 20px; }
+h1 { margin: 0; }
+.tagline { color: var(--muted); }
+.panes { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 28px 0; }
+section { background: #fff; border: 1px solid #e9ecef; border-radius: 12px; padding: 20px; }
+button, .fake-btn {
+  font: inherit; padding: 10px 18px; border-radius: 8px; cursor: pointer;
+  border: 1px solid #ced4da; background: #fff;
+}
+button.primary, .fake-btn.primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+button:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+/* Broken modal styling — looks identical, behaves terribly */
+.overlay { position: fixed; inset: 0; background: rgb(0 0 0 / .5); display: grid; place-items: center; }
+.modal { background: #fff; border-radius: 12px; padding: 24px; width: min(380px, 90vw); }
+.fake-btn { display: inline-block; user-select: none; }
+.actions { display: flex; gap: 10px; justify-content: flex-end; margin-top: 16px; }
+
+/* Fixed modal */
+dialog { border: none; border-radius: 12px; padding: 24px; width: min(380px, 90vw); }
+dialog::backdrop { background: rgb(0 0 0 / .5); }
+dialog input { width: 100%; padding: 10px 12px; margin-top: 4px; border: 1.5px solid #ced4da; border-radius: 8px; font: inherit; }
+dialog label { font-size: .9rem; font-weight: 600; }
+body:has(dialog[open]) { overflow: hidden; } /* scroll lock */

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>modal-rescue — broken vs fixed</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<main>
+  <h1>modal-rescue</h1>
+  <p class="tagline">Same modal, two builds. Try both with only your keyboard.</p>
+
+  <div class="panes">
+    <section aria-labelledby="h-broken">
+      <h2 id="h-broken">❌ The broken way</h2>
+      <button id="open-broken" type="button">Open (broken)</button>
+    </section>
+
+    <section aria-labelledby="h-fixed">
+      <h2 id="h-fixed">✅ The fixed way</h2>
+      <button id="open-fixed" type="button">Open (fixed)</button>
+    </section>
+  </div>
+
+  <p>Decoy links to demonstrate focus escaping: <a href="#">one</a> · <a href="#">two</a> · <a href="#">three</a></p>
+</main>
+
+<!-- BROKEN: a div pretending to be a dialog. Every defect here is intentional. -->
+<div id="broken-modal" class="overlay" style="display:none">
+  <div class="modal">
+    <h2>Join the newsletter</h2>
+    <p>Weekly UI + testing tips. No spam.</p>
+    <input placeholder="you@example.com" />
+    <div class="actions">
+      <span class="fake-btn" onclick="document.getElementById('broken-modal').style.display='none'">Close</span>
+      <span class="fake-btn primary" onclick="alert('subscribed!')">Subscribe</span>
+    </div>
+  </div>
+</div>
+
+<!-- FIXED: native dialog. -->
+<dialog id="fixed-modal" aria-labelledby="fixed-title">
+  <h2 id="fixed-title">Join the newsletter</h2>
+  <p>Weekly UI + testing tips. No spam.</p>
+  <label for="email">Email address</label>
+  <input id="email" type="email" autocomplete="email" />
+  <div class="actions">
+    <button type="button" id="fixed-close">Close</button>
+    <button type="button" class="primary" id="fixed-subscribe">Subscribe</button>
+  </div>
+</dialog>
+
+<script src="app.js"></script>
+</body>
+</html>
