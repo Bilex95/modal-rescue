@@ -25,3 +25,15 @@ dialog::backdrop { background: rgb(0 0 0 / .5); }
 dialog input { width: 100%; padding: 10px 12px; margin-top: 4px; border: 1.5px solid #ced4da; border-radius: 8px; font: inherit; }
 dialog label { font-size: .9rem; font-weight: 600; }
 body:has(dialog[open]) { overflow: hidden; } /* scroll lock */
+
+/* Fixed dialog enter motion */
+@keyframes dialog-in {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
+}
+dialog[open] {
+  animation: dialog-in 160ms ease-out;
+}
+@media (prefers-reduced-motion: reduce) {
+  dialog[open] { animation: none; }
+}
