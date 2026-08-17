@@ -40,3 +40,9 @@ Each defect below maps to the relevant WCAG 2.1 criterion and its fix in the ✅
 ## 8. Background still scrolls
 **Defect:** the page scrolls behind the overlay; disorienting at high zoom. 
 **Fix:** `body:has(dialog[open]) { overflow: hidden; }`.
+
+
+## N. Motion respects prefers-reduced-motion
+**Defect (optional polish):** animated dialog open can nauseate motion-sensitive users.
+**WCAG:** 2.3.3 Animation from Interactions (AAA).
+**Fix:** fade/scale on `dialog[open]`, disabled under `@media (prefers-reduced-motion: reduce)`.
